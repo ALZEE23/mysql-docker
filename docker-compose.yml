@@ -1,13 +1,13 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: dompet_dhuafa_db
+    container_name: rumah_sakit_db
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel_user
-      MYSQL_PASSWORD: laravel_password
+      MYSQL_DATABASE: rumah_sakit_db
+      MYSQL_USER: rumah_sakit_user
+      MYSQL_PASSWORD: rumah_sakit_password
     ports:
       - "3306:3306"
     volumes:
