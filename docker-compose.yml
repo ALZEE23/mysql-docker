@@ -1,18 +1,26 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: rumah_sakit_db
+    container_name: klinik_db
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: rumah_sakit_db
-      MYSQL_USER: rumah_sakit_user
-      MYSQL_PASSWORD: rumah_sakit_password
+      MYSQL_DATABASE: klinik_db
+      MYSQL_USER: klinik_user
+      MYSQL_PASSWORD: klinik_password
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
-
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1 # Allows you to enter any server IP on the login page
+      - PMA_HOST=db     # Automatically connects to the 'db' service above
+      
 volumes:
   mysql_data:
